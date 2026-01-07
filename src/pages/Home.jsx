@@ -158,11 +158,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* --- SPLIT STORY SECTION --- */}
-    
-
-        {/* --- NEWSLETTER CTA --- */}
-        
       </main>
 
       <Footer />
