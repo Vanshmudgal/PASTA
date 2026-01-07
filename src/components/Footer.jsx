@@ -9,25 +9,7 @@ export default function Footer() {
     <footer className="bg-[#1A1814] text-[#E5E5E5] pt-16 pb-8 border-t-4 border-[#F9D71C]">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Top Section: Newsletter */}
-        <div className="flex flex-col md:flex-row justify-between items-center pb-12 border-b border-white/10 mb-12 gap-6">
-          <div>
-            <h3 className="text-2xl font-serif text-white mb-2">Join our pasta family</h3>
-            <p className="text-white/60 text-sm">Get exclusive offers and secret recipes delivered to your inbox.</p>
-          </div>
-          <div className="flex w-full md:w-auto">
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
-              className="bg-white/5 border border-white/10 px-4 py-3 rounded-l-lg focus:outline-none focus:border-[#F9D71C] w-full md:w-64 text-sm"
-            />
-            <button className="bg-[#F9D71C] text-[#8B5A2B] font-bold px-6 py-3 rounded-r-lg hover:bg-[#E8C220] transition-colors">
-              Subscribe
-            </button>
-          </div>
-        </div>
-
-        {/* Main Grid - Changed to 3 columns */}
+        {/* Main Grid - 3 columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           
           {/* Column 1: Brand */}
@@ -58,7 +40,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Quick Links (Merged) */}
+          {/* Column 2: Quick Links */}
           <div className="md:pl-10">
             <h4 className="text-white font-serif text-lg mb-6">Quick Links</h4>
             <ul className="space-y-3 text-sm text-white/70">

@@ -20,7 +20,7 @@ export default function Header() {
   const navItems = [
     { label: "Home", path: "/" },
     { label: "Shop", path: "/shop" },
-    { label: "Our Story", path: "/about" },  // Changed from "Story" to "Our Story"
+    { label: "Our Story", path: "/about" },
     { label: "Contact", path: "/contact" }
   ];
 
@@ -36,11 +36,11 @@ export default function Header() {
         {/* Main Navigation */}
         <div className="flex justify-between items-center">
           
-          {/* Logo */}
+          {/* Logo - Matches Footer Style */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <span className="text-2xl group-hover:rotate-12 transition-transform duration-300">🥐</span>
-            <span className="text-2xl font-serif font-bold text-[#2F241F] tracking-tight">
-              INESA<span className="text-[#D4A373]">Pastaz</span>
+            <span className="text-3xl group-hover:rotate-12 transition-transform duration-300">🍝</span>
+            <span className="text-2xl font-serif font-bold text-[#1A1814] tracking-wide">
+              INESA <span className="text-[#D4A373]">PASTAZ</span>
             </span>
           </Link>
 
@@ -56,15 +56,18 @@ export default function Header() {
               </Link>
             ))}
             
-            {/* Added CTA Button */}
-            <button className="bg-[#2F241F] hover:bg-[#D4A373] hover:-translate-y-0.5 transform text-white font-medium py-2 px-6 rounded-full transition-all shadow-md text-sm">
-              Order Now
-            </button>
+            {/* Checkout Button (Desktop) */}
+            <Link 
+              to="/checkout"
+              className="bg-[#1A1814] hover:bg-[#D4A373] hover:-translate-y-0.5 transform text-white font-medium py-2 px-6 rounded-full transition-all shadow-md text-sm"
+            >
+              Checkout
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-[#2F241F] focus:outline-none p-1"
+            className="md:hidden text-[#1A1814] focus:outline-none p-1"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
@@ -78,17 +81,21 @@ export default function Header() {
               <Link
                 key={item.label}
                 to={item.path}
-                className="text-lg font-serif text-[#2F241F] border-b border-[#E5DCC5]/50 pb-2"
+                className="text-lg font-serif text-[#1A1814] border-b border-[#E5DCC5]/50 pb-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
             
-            {/* Mobile CTA Button */}
-            <button className="w-full bg-[#2F241F] text-white py-3 rounded-full mt-2 font-medium">
-              Order Now
-            </button>
+            {/* Checkout Button (Mobile) */}
+            <Link 
+              to="/checkout"
+              className="w-full bg-[#1A1814] text-white py-3 rounded-full mt-2 font-medium text-center block"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Checkout
+            </Link>
           </div>
         )}
       </div>
