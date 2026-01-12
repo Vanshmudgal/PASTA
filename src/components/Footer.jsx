@@ -70,12 +70,7 @@ export default function Footer() {
                   inesapastaz@gmail.com
                 </a>
               </li>
-              <li className="flex items-center gap-3">
-                <FaPhoneAlt className="text-[#F9D71C] flex-shrink-0" />
-                <a href="tel:+9188002005227" className="hover:text-white transition-colors">
-                  +91 88002005227
-                </a>
-              </li>
+              
             </ul>
           </div>
         </div>
