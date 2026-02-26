@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Leaf, Heart, Globe, Award, Users, Utensils } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default function AboutUs() {
+  // State to track if images have loaded
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isLocationImageLoaded, setIsLocationImageLoaded] = useState(false);
+
   const values = [
     {
       icon: <Utensils className="w-8 h-8" />,
@@ -66,13 +70,25 @@ export default function AboutUs() {
         <section className="px-6 py-24 max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
             
-            {/* Image Side */}
-            <div className="relative group">
+            {/* Image Side with Fallback UI */}
+            <div className="relative group h-[500px]">
               <div className="absolute -inset-4 border-2 border-[#F9D71C] rounded-2xl rotate-2 group-hover:rotate-0 transition-transform duration-500"></div>
+              
+              {/* Fallback Skeleton */}
+              {!isImageLoaded && (
+                <div className="absolute inset-0 z-10 rounded-2xl shadow-2xl bg-[#E8E3DD] animate-pulse rotate-[-2deg] group-hover:rotate-0 transition-transform duration-500 flex items-center justify-center">
+                  <span className="text-[#8B5A2B] font-medium font-serif italic">Loading...</span>
+                </div>
+              )}
+
+              {/* Actual Image */}
               <img
-                src="https://thumbs.dreamstime.com/b/italian-penne-pasta-alla-vodka-topped-parmesan-parsley-close-up-plate-vertical-top-view-table-above-162831164.jpg"
+                src="https://s.lightorangebean.com/media/20240914160809/Spicy-Penne-Pasta_-done.png.webp"
                 alt="Chef making pasta"
-                className="relative z-10 rounded-2xl shadow-2xl w-full h-[500px] object-cover rotate-[-2deg] group-hover:rotate-0 transition-transform duration-500"
+                onLoad={() => setIsImageLoaded(true)}
+                className={`absolute inset-0 z-10 rounded-2xl shadow-2xl w-full h-full object-cover rotate-[-2deg] group-hover:rotate-0 transition-all duration-500 ${
+                  isImageLoaded ? "opacity-100" : "opacity-0"
+                }`}
               />
             </div>
 
@@ -162,13 +178,28 @@ export default function AboutUs() {
             
             {/* Map/Image Placeholder */}
             <div className="md:w-1/2 w-full h-64 md:h-80 bg-gray-100 rounded-3xl overflow-hidden shadow-inner relative">
-                {/* Visual representation of map or location */}
+                
+                {/* Fallback Skeleton */}
+                {!isLocationImageLoaded && (
+                  <div className="absolute inset-0 z-10 bg-[#E8E3DD] animate-pulse flex items-center justify-center">
+                    <span className="text-[#8B5A2B] font-medium font-serif italic">Loading Location...</span>
+                  </div>
+                )}
+
+                {/* Actual Image */}
                 <img 
                     src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Clock_Tower%2C_Meerut_%282023%29_1.jpg" 
-                    alt="Restaurant Interior"
-                    className="w-full h-full object-cover"
+                    alt="Restaurant Location"
+                    onLoad={() => setIsLocationImageLoaded(true)}
+                    className={`absolute inset-0 z-10 w-full h-full object-cover transition-opacity duration-500 ${
+                      isLocationImageLoaded ? "opacity-100" : "opacity-0"
+                    }`}
                 />
-                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-lg text-xs font-bold shadow-sm">
+
+                {/* Location Badge (Fades in with image) */}
+                <div className={`absolute bottom-4 left-4 z-20 bg-white/90 backdrop-blur px-4 py-2 rounded-lg text-xs font-bold shadow-sm transition-opacity duration-500 ${
+                  isLocationImageLoaded ? "opacity-100" : "opacity-0"
+                }`}>
                     📍 A Block, Pallavpuram
                 </div>
             </div>
