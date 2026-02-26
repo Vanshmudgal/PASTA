@@ -7,7 +7,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Added Scroll Effect Listener
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -17,7 +16,6 @@ export default function Header() {
   }, []);
 
   return (
-    // Updated <header> with dynamic scroll classes (Glassmorphism)
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
@@ -26,7 +24,6 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
-        {/* Main Navigation */}
         <div className="flex justify-between items-center">
           
           {/* Logo */}
@@ -39,7 +36,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {["Home", "Shop", "Story", "Contact"].map((item) => (
+            {["Home", "Shop", "Contact"].map((item) => (
               <Link
                 key={item}
                 to={item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-")}`}
@@ -49,7 +46,6 @@ export default function Header() {
               </Link>
             ))}
             
-            {/* Added CTA Button */}
             <button className="bg-[#2F241F] hover:bg-[#D4A373] hover:-translate-y-0.5 transform text-white font-medium py-2 px-6 rounded-full transition-all shadow-md text-sm">
               Order Now
             </button>
@@ -82,13 +78,6 @@ export default function Header() {
               Shop
             </Link>
             <Link
-              to="/about"
-              className="text-lg font-serif text-[#2F241F] border-b border-[#E5DCC5]/50 pb-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Our Story
-            </Link>
-            <Link
               to="/contact"
               className="text-lg font-serif text-[#2F241F] border-b border-[#E5DCC5]/50 pb-2"
               onClick={() => setIsMenuOpen(false)}
@@ -96,7 +85,6 @@ export default function Header() {
               Contact
             </Link>
             
-            {/* Mobile CTA Button */}
             <button className="w-full bg-[#2F241F] text-white py-3 rounded-full mt-2 font-medium">
               Order Now
             </button>

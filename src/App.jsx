@@ -37,7 +37,6 @@ const App = () => {
           path="/checkout" 
           element={<Checkout cart={cart} setCart={setCart} clearCart={clearCart} />} 
         />
-        <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
